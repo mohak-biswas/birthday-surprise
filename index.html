@@ -334,7 +334,7 @@
                     <span class="pixel-heart"></span>
                 </p>
                 
-                <button class="surprise-btn" onclick="showSurprise()">
+                <button class="surprise-btn" id="surpriseBtn"">
                     🎉 Click for Surprise! 🎉
                 </button>
             </div>
@@ -442,28 +442,20 @@
         }
 
         // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Page loaded successfully!');
-            
-            // Create initial floating hearts
-            for (let i = 0; i < 3; i++) {
-                setTimeout(createFloatingHeart, i * 1000);
-            }
-            
-            // Create floating hearts continuously
-            setInterval(createFloatingHeart, 2000);
-        });
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('Page loaded successfully!');
 
-        // Backup initialization in case DOMContentLoaded doesn't work
-        window.onload = function() {
-            console.log('Window loaded!');
-            if (!document.querySelector('.floating-heart')) {
-                for (let i = 0; i < 3; i++) {
-                    setTimeout(createFloatingHeart, i * 1000);
-                }
-                setInterval(createFloatingHeart, 2000);
-            }
-        };
+    const btn = document.getElementById('surpriseBtn');
+    btn.addEventListener('click', showSurprise);
+
+    // Create initial floating hearts
+    for (let i = 0; i < 3; i++) {
+        setTimeout(createFloatingHeart, i * 1000);
+    }
+
+    // Continuous floating hearts
+    setInterval(createFloatingHeart, 2000);
+});
     </script>
 </body>
 </html>
