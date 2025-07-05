@@ -1,461 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Love! 💕</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Comic Sans MS', cursive;
-            background: linear-gradient(45deg, #ff6b9d, #ffc3e0, #ff8fab, #ffb3d9);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            position: relative;
-            z-index: 1;
-        }
-
-        .main-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            backdrop-filter: blur(10px);
-        }
-
-        .love-border {
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 3px solid #ff6b9d;
-            border-radius: 35px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.8; }
-            50% { opacity: 1; }
-            100% { opacity: 0.8; }
-        }
-
-        .pixel-heart {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: #ff6b9d;
-            margin: 0 5px;
-            position: relative;
-            transform: rotate(45deg);
-            animation: heartbeat 1.5s infinite;
-        }
-
-        .pixel-heart::before,
-        .pixel-heart::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #ff6b9d;
-        }
-
-        .pixel-heart::before {
-            top: -10px;
-            left: 0;
-            border-radius: 50%;
-        }
-
-        .pixel-heart::after {
-            top: 0;
-            left: -10px;
-            border-radius: 50%;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: rotate(45deg) scale(1); }
-            50% { transform: rotate(45deg) scale(1.2); }
-        }
-
-        .tulip {
-            display: inline-block;
-            margin: 0 10px;
-            animation: sway 3s ease-in-out infinite;
-        }
-
-        .tulip-flower {
-            width: 30px;
-            height: 40px;
-            background: linear-gradient(45deg, #ff6b9d, #ff8fab);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            position: relative;
-            margin: 0 auto 5px;
-        }
-
-        .tulip-stem {
-            width: 4px;
-            height: 30px;
-            background: #4caf50;
-            margin: 0 auto;
-            border-radius: 2px;
-        }
-
-        .tulip-leaf {
-            width: 20px;
-            height: 8px;
-            background: #4caf50;
-            border-radius: 50%;
-            position: absolute;
-            top: 15px;
-            left: -8px;
-            transform: rotate(-30deg);
-        }
-
-        @keyframes sway {
-            0%, 100% { transform: rotate(0deg); }
-            33% { transform: rotate(3deg); }
-            66% { transform: rotate(-3deg); }
-        }
-
-        .surprise-btn {
-            background: linear-gradient(45deg, #ff6b9d, #ff8fab);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Comic Sans MS', cursive;
-            font-weight: bold;
-            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
-            transition: all 0.3s ease;
-            margin: 20px 0;
-        }
-
-        .surprise-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(255, 107, 157, 0.4);
-        }
-
-        .surprise-btn:active {
-            transform: translateY(0);
-        }
-
-        .birthday-message {
-            display: none;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .birthday-message.show {
-            display: block;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .message-text {
-            font-size: 24px;
-            color: #333;
-            margin: 20px 0;
-            line-height: 1.6;
-        }
-
-        .birthday-title {
-            font-size: 32px;
-            color: #ff6b9d;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .floating-hearts {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .floating-heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 107, 157, 0.7);
-            transform: rotate(45deg);
-            animation: float 6s linear infinite;
-        }
-
-        .floating-heart::before,
-        .floating-heart::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 107, 157, 0.7);
-        }
-
-        .floating-heart::before {
-            top: -10px;
-            left: 0;
-            border-radius: 50%;
-        }
-
-        .floating-heart::after {
-            top: 0;
-            left: -10px;
-            border-radius: 50%;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(45deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(45deg);
-                opacity: 0;
-            }
-        }
-
-        .tulip-garden {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            margin: 20px 0;
-            height: 80px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .love-message {
-            font-size: 18px;
-            color: #666;
-            margin: 15px 0;
-            font-style: italic;
-        }
-
-        .sparkle {
-            display: inline-block;
-            font-size: 20px;
-            animation: sparkle 1.5s infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday My Love! 💕</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(45deg, #ff6b9d, #ffc3e0, #ff8fab, #ffb3d9, #c77dff, #7209b7);
+      background-size: 600% 600%;
+      animation: gradientShift 10s ease infinite;
+      min-height: 100vh;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 100% 50%; }
+      50% { background-position: 50% 100%; }
+      75% { background-position: 0% 100%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .cursor-trail {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #ff6b9d, transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      animation: cursorFade 0.5s ease-out forwards;
+    }
+    @keyframes cursorFade {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0); }
+    }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .main-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 30px;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .main-card:hover {
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    }
+    
+    .love-border {
+      position: absolute;
+      top: -10px; left: -10px; right: -10px; bottom: -10px;
+      border: 3px solid #ff6b9d;
+      border-radius: 35px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+    
+    .birthday-title {
+      font-size: 36px;
+      color: #ff6b9d;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      animation: bounce 2s infinite;
+      transition: all 0.3s ease;
+    }
+    
+    .birthday-title:hover {
+      transform: scale(1.1);
+      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .interactive-hearts {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+      gap: 20px;
+    }
+    
+    .clickable-heart {
+      width: 40px;
+      height: 40px;
+      background: #ff6b9d;
+      position: relative;
+      transform: rotate(45deg);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: heartbeat 2s infinite;
+    }
+    
+    .clickable-heart:hover {
+      transform: rotate(45deg) scale(1.3);
+      background: #ff8fab;
+      filter: drop-shadow(0 0 20px #ff6b9d);
+    }
+    
+    .clickable-heart::before,
+    .clickable-heart::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: inherit;
+      border-radius: 50%;
+    }
+    .clickable-heart::before { top: -20px; left: 0; }
+    .clickable-heart::after { top: 0; left: -20px; }
+    
+    @keyframes heartbeat {
+      0%, 100% { transform: rotate(45deg) scale(1); }
+      50% { transform: rotate(45deg) scale(1.1); }
+    }
+    
+    .message-text {
+      font-size: 24px;
+      color: #333;
+      margin: 20px 0;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+    
+    .message-text:hover {
+      color: #ff6b9d;
+      transform: scale(1.05);
+    }
+    
+    .dancing-tulips {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      margin: 30px 0;
+      height: 100px;
+      gap: 10px;
+    }
+    
+    .tulip {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: sway 3s ease-in-out infinite;
+    }
+    
+    .tulip:hover {
+      transform: scale(1.2) rotate(10deg);
+      animation-duration: 0.5s;
+    }
+    
+    .tulip-flower {
+      width: 35px;
+      height: 45px;
+      background: linear-gradient(45deg, #ff6b9d, #ff8fab);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      position: relative;
+      margin: 0 auto 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .tulip:hover .tulip-flower {
+      background: linear-gradient(45deg, #c77dff, #7209b7);
+    }
+    
+    .tulip-stem {
+      width: 4px;
+      height: 40px;
+      background: #4caf50;
+      margin: 0 auto;
+      border-radius: 2px;
+      position: relative;
+    }
+    
+    .tulip-leaf {
+      width: 20px;
+      height: 8px;
+      background: #4caf50;
+      border-radius: 50%;
+      position: absolute;
+      top: 20px;
+      left: -8px;
+      transform: rotate(-30deg);
+    }
+    
+    @keyframes sway {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(5deg); }
+      75% { transform: rotate(-5deg); }
+    }
+    
+    .love-message {
+      font-size: 20px;
+      color: #666;
+      margin: 25px 0;
+      font-style: italic;
+      transition: all 0.3s ease;
+    }
+    
+    .love-message:hover {
+      color: #ff6b9d;
+      transform: scale(1.1);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sparkle-container {
+      margin: 30px 0;
+    }
+    
+    .sparkle {
+      display: inline-block;
+      font-size: 30px;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: sparkle 2s infinite;
+    }
+    
+    .sparkle:hover {
+      transform: scale(1.5) rotate(180deg);
+      filter: drop-shadow(0 0 10px currentColor);
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+    
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .floating-heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 107, 157, 0.8);
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+    }
+    
+    .floating-heart::before,
+    .floating-heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: inherit;
+      border-radius: 50%;
+    }
+    .floating-heart::before { top: -10px; left: 0; }
+    .floating-heart::after { top: 0; left: -10px; }
+    
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(45deg); opacity: 0; }
+    }
+    
+    .birthday-cake {
+      font-size: 60px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin: 20px 0;
+    }
+    
+    .birthday-cake:hover {
+      transform: scale(1.2) rotate(5deg);
+      filter: drop-shadow(0 0 20px #ff6b9d);
+    }
+    
+    .magic-text {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px;
+      color: #ff6b9d;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1000;
+      animation: magicAppear 3s ease-in-out;
+    }
+    
+    @keyframes magicAppear {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+    }
+  </style>
 </head>
 <body>
-    <div class="floating-hearts" id="floatingHearts"></div>
-    
-    <div class="container">
-        <div class="main-card">
-            <div class="love-border"></div>
-            
-            <div id="initialPage">
-                <h1 style="color: #ff6b9d; margin-bottom: 20px; font-size: 28px;">
-                    <span class="sparkle">✨</span>
-                    Something Special Awaits
-                    <span class="sparkle">✨</span>
-                </h1>
-                
-                <div class="tulip-garden">
-                    <div class="tulip">
-                        <div class="tulip-flower"></div>
-                        <div class="tulip-stem">
-                            <div class="tulip-leaf"></div>
-                        </div>
-                    </div>
-                    <div class="tulip">
-                        <div class="tulip-flower"></div>
-                        <div class="tulip-stem">
-                            <div class="tulip-leaf"></div>
-                        </div>
-                    </div>
-                    <div class="tulip">
-                        <div class="tulip-flower"></div>
-                        <div class="tulip-stem">
-                            <div class="tulip-leaf"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <p style="color: #666; font-size: 18px; margin: 20px 0;">
-                    <span class="pixel-heart"></span>
-                    Click the button below for your surprise!
-                    <span class="pixel-heart"></span>
-                </p>
-                
-                <button class="surprise-btn" id="surpriseBtn"">
-                    🎉 Click for Surprise! 🎉
-                </button>
-            </div>
-            
-            <div id="birthdayMessage" class="birthday-message">
-                <h1 class="birthday-title">🎂 Happy Birthday My Love! 🎂</h1>
-                
-                <div class="tulip-garden">
-                    <div class="tulip">
-                        <div class="tulip-flower"></div>
-                        <div class="tulip-stem">
-                            <div class="tulip-leaf"></div>
-                        </div>
-                    </div>
-                    <div class="tulip">
-                        <div class="tulip-flower"></div>
-                        <div class="tulip-stem">
-                            <div class="tulip-leaf"></div>
-                        </div>
-                    </div>
-                    <div class="tulip">
-                        <div class="tulip-flower"></div>
-                        <div class="tulip-stem">
-                            <div class="tulip-leaf"></div>
-                        </div>
-                    </div>
-                    <div class="tulip">
-                        <div class="tulip-flower"></div>
-                        <div class="tulip-stem">
-                            <div class="tulip-leaf"></div>
-                        </div>
-                    </div>
-                    <div class="tulip">
-                        <div class="tulip-flower"></div>
-                        <div class="tulip-stem">
-                            <div class="tulip-leaf"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="message-text">
-                    <span class="pixel-heart"></span>
-                    Even though we're miles apart,
-                    <br>
-                    You're always close to my heart!
-                    <span class="pixel-heart"></span>
-                </div>
-                
-                <div class="love-message">
-                    "Distance means nothing when you mean everything to me.
-                    <br>
-                    Happy Birthday, Beautiful! 💕"
-                </div>
-                
-                <div style="margin-top: 30px;">
-                    <span class="sparkle">🎈</span>
-                    <span class="sparkle">🎂</span>
-                    <span class="sparkle">🎉</span>
-                    <span class="sparkle">💕</span>
-                    <span class="sparkle">🌷</span>
-                    <span class="sparkle">✨</span>
-                </div>
-            </div>
+  <div class="floating-hearts" id="floatingHearts"></div>
+  
+  <div class="container">
+    <div class="main-card" id="mainCard">
+      <div class="love-border"></div>
+      
+      <h1 class="birthday-title">🎂 Happy Birthday My Love! 🎂</h1>
+      
+      <div class="birthday-cake" id="birthdayCake">🎂</div>
+      
+      <div class="interactive-hearts">
+        <div class="clickable-heart" id="heart1"></div>
+        <div class="clickable-heart" id="heart2"></div>
+        <div class="clickable-heart" id="heart3"></div>
+      </div>
+      
+      <div class="dancing-tulips">
+        <div class="tulip" id="tulip1">
+          <div class="tulip-flower"></div>
+          <div class="tulip-stem"><div class="tulip-leaf"></div></div>
         </div>
+        <div class="tulip" id="tulip2">
+          <div class="tulip-flower"></div>
+          <div class="tulip-stem"><div class="tulip-leaf"></div></div>
+        </div>
+        <div class="tulip" id="tulip3">
+          <div class="tulip-flower"></div>
+          <div class="tulip-stem"><div class="tulip-leaf"></div></div>
+        </div>
+        <div class="tulip" id="tulip4">
+          <div class="tulip-flower"></div>
+          <div class="tulip-stem"><div class="tulip-leaf"></div></div>
+        </div>
+      </div>
+      
+      <div class="message-text">
+        Even though we're miles apart, <br>
+        You're always close to my heart! 💕
+      </div>
+      
+      <div class="love-message">
+        "Distance means nothing when you mean everything to me.<br>
+        Happy Birthday, Ashviniii! 💕"
+      </div>
+      
+      <div class="sparkle-container">
+        <span class="sparkle" id="sparkle1">🎈</span>
+        <span class="sparkle" id="sparkle2">🎉</span>
+        <span class="sparkle" id="sparkle3">✨</span>
+        <span class="sparkle" id="sparkle4">🌷</span>
+        <span class="sparkle" id="sparkle5">💕</span>
+        <span class="sparkle" id="sparkle6">🎁</span>
+      </div>
     </div>
+  </div>
 
-    <script>
-        // Create floating hearts
-        function createFloatingHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'floating-heart';
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDelay = Math.random() * 3 + 's';
-            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
-            const container = document.getElementById('floatingHearts');
-            if (container) {
-                container.appendChild(heart);
-            }
-            
-            setTimeout(() => {
-                if (heart.parentNode) {
-                    heart.parentNode.removeChild(heart);
-                }
-            }, 7000);
-        }
-
-        // Show surprise function
-        function showSurprise() {
-            console.log('Button clicked!');
-            const initialPage = document.getElementById('initialPage');
-            const birthdayMessage = document.getElementById('birthdayMessage');
-            
-            if (initialPage && birthdayMessage) {
-                initialPage.style.display = 'none';
-                birthdayMessage.style.display = 'block';
-                birthdayMessage.classList.add('show');
-                
-                // Add extra celebration effects
-                setTimeout(() => {
-                    for (let i = 0; i < 15; i++) {
-                        setTimeout(createFloatingHeart, i * 100);
-                    }
-                }, 500);
-            }
-        }
-
-        // Initialize when page loads
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('Page loaded successfully!');
-
-    const btn = document.getElementById('surpriseBtn');
-    btn.addEventListener('click', showSurprise);
-
-    // Create initial floating hearts
-    for (let i = 0; i < 3; i++) {
-        setTimeout(createFloatingHeart, i * 1000);
+  <script>
+    // Create floating hearts continuously
+    function createFloatingHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.animationDelay = Math.random() * 3 + 's';
+      heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      document.getElementById('floatingHearts').appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
     }
 
-    // Continuous floating hearts
+    // Create magic text popup
+    function createMagicText(text) {
+      const magicText = document.createElement('div');
+      magicText.className = 'magic-text';
+      magicText.textContent = text;
+      document.body.appendChild(magicText);
+      setTimeout(() => magicText.remove(), 3000);
+    }
+
+    // Create cursor trail
+    function createCursorTrail(x, y) {
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      trail.style.left = x + 'px';
+      trail.style.top = y + 'px';
+      document.body.appendChild(trail);
+      setTimeout(() => trail.remove(), 500);
+    }
+
+    // Mouse movement effects
+    document.addEventListener('mousemove', (e) => {
+      if (Math.random() < 0.1) {
+        createCursorTrail(e.clientX, e.clientY);
+      }
+    });
+
+    // Click anywhere for hearts
+    document.addEventListener('click', (e) => {
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => createFloatingHeart(), i * 100);
+      }
+    });
+
+    // Interactive elements
+    const magicMessages = [
+      "I Love You! 💕",
+      "You're Amazing! ✨",
+      "Happy Birthday! 🎉",
+      "You're My Everything! 💖",
+      "Best Day Ever! 🎂",
+      "Forever Yours! 💕"
+    ];
+
+    // Heart clicks
+    document.querySelectorAll('.clickable-heart').forEach(heart => {
+      heart.addEventListener('click', (e) => {
+        e.stopPropagation();
+        createMagicText(magicMessages[Math.floor(Math.random() * magicMessages.length)]);
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => createFloatingHeart(), i * 50);
+        }
+      });
+    });
+
+    // Cake click
+    document.getElementById('birthdayCake').addEventListener('click', (e) => {
+      e.stopPropagation();
+      createMagicText("Make a Wish! 🌟");
+      for (let i = 0; i < 10; i++) {
+        setTimeout(() => createFloatingHeart(), i * 100);
+      }
+    });
+
+    // Tulip clicks
+    document.querySelectorAll('.tulip').forEach(tulip => {
+      tulip.addEventListener('click', (e) => {
+        e.stopPropagation();
+        createMagicText("Beautiful Like You! 🌷");
+        createFloatingHeart();
+      });
+    });
+
+    // Sparkle clicks
+    document.querySelectorAll('.sparkle').forEach(sparkle => {
+      sparkle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        createMagicText("Sparkle & Shine! ✨");
+        createFloatingHeart();
+      });
+    });
+
+    // Card click
+    document.getElementById('mainCard').addEventListener('click', () => {
+      createMagicText("Happy Birthday Beautiful! 🎂");
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => createFloatingHeart(), i * 150);
+      }
+    });
+
+    // Auto-create hearts
     setInterval(createFloatingHeart, 2000);
-});
-    </script>
+    
+    // Initial hearts
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => createFloatingHeart(), i * 500);
+    }
+  </script>
 </body>
 </html>
